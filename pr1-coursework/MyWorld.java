@@ -17,5 +17,12 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(400, 400, 1);
+        prepare();
     }
+
+    private void prepare(){
+        Ingredient bread = new Ingredient(1,"Bread","breadIcon.png",5);
+        addObject(bread,12,15);
+    }
+
 }
