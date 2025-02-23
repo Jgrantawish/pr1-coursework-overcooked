@@ -21,7 +21,7 @@ public class MyWorld extends World
     }
 
     private void prepare(){
-        Ingredient bread = new Ingredient(1,"Bread","breadIcon.png",5);
+        Ingredient bread = new Ingredient(1,"Bread","breadIcon.png","sliced-bread.png",5);
         addObject(bread,12,15);
     }
 
