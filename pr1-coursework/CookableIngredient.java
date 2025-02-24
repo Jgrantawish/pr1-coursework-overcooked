@@ -11,12 +11,8 @@ public class CookableIngredient extends Ingredient
     private int cookTime;
     private int burnTime;
     private CookType cookMethod;
-
-    public enum CookType {
-        BOIL,FRY,OVEN_BAKE
-    }
     
-    public CookableIngredient(int ingredientNumber, String name, String iconFileName, String choppedIconFileName, int chopsRequired, CookType cookMethod, int cookTime, int burnTime, String cookedIconFileName){
+    public CookableIngredient(int ingredientNumber, String name, String iconFileName, String choppedIconFileName, String cookedIconFileName, int chopsRequired, CookType cookMethod, int cookTime, int burnTime){
         super(ingredientNumber,name,iconFileName,choppedIconFileName,chopsRequired); 
         this.cookMethod = cookMethod;
         this.cookTime = cookTime;
@@ -29,18 +25,16 @@ public class CookableIngredient extends Ingredient
      * Act - do whatever the CookableIngredient wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
-        setImage(icons.get(progress));
-       if (location == Location.PREP_AREA && progress < 1){
-           chop();
-       }
-       if (progress == icons.size()) {
-           isPrepared = true;
-       }
+    //public void act(){
+    //Ovewrites the act of the superclass 
+    //}
+    
+    //Will be called by the superclass 
+    protected void onAct(){
+        
     }
     
     public void cook(){
-        
+    
     }
 }

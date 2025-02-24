@@ -17,6 +17,8 @@ public class Ingredient extends Actor {
     private String name;
     protected ArrayList<GreenfootImage> icons;
     private int chopsRequired;
+    private int chops;
+    private boolean cDown;
     public Location location ;
     protected int progress;
     public boolean isPrepared;
@@ -32,9 +34,13 @@ public class Ingredient extends Actor {
         this.icons.add(new GreenfootImage(iconFileName));
         this.icons.add(new GreenfootImage(choppedIconFileName));
         this.chopsRequired = chopsRequired;
+        this.chops = 0;
+        this.cDown = false;
         this.location = Location.PREP_AREA;
         this.isPrepared = false;
         this.progress = 0; 
+        
+        setImage(icons.get(progress));
 
     }
 
@@ -43,27 +49,39 @@ public class Ingredient extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act(){ 
-       setImage(icons.get(progress));
+    
        if (location == Location.PREP_AREA && progress < 1){
-           chop();
+           checkForChop();
        }
-       if (progress == icons.size()) {
+       onAct();
+       if (progress == icons.size()-1) {
            isPrepared = true;
        }
     }
+    
+    protected void onAct(){
+    }
 
-    public void chop(){
-         boolean cDown = false; 
-         int currentChops = 0;
-         while (currentChops < chopsRequired && progress != 1){ 
-            if (Greenfoot.isKeyDown("c") && cDown == false){
-             currentChops++;
-             cDown = true;
-            }
-            else if (!Greenfoot.isKeyDown("c") && cDown == true){
-             cDown = false;
-            }
+    private void checkForChop(){
+        if (Greenfoot.isKeyDown("c") && cDown == false){
+            chop();
+            cDown = true;
         }
-        progress++; 
+        else if (!Greenfoot.isKeyDown("c") && cDown == true){
+            cDown = false;
+        }
+    }
+    
+    private void chop(){
+        chops++;
+        if (chops >= chopsRequired){
+            incrementProgress();
+        }
+        
+    }
+    
+    private void incrementProgress(){
+        progress++;
+        setImage(icons.get(progress));
     }
 }
