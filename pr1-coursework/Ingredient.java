@@ -27,12 +27,12 @@ public class Ingredient extends Actor {
         STORAGE,HAND,PREP_AREA,FRYING_PAN,HOB,OVEN,PLATE
     }
     
-    public Ingredient(int ingredientNumber, String name, String iconFileName,String choppedIconFileName, int chopsRequired) {
+    public Ingredient(int ingredientNumber, String name, int chopsRequired) {
         this.ingredientNumber = ingredientNumber;
         this.name = name;
         this.icons = new ArrayList<GreenfootImage>();
-        this.icons.add(new GreenfootImage(iconFileName));
-        this.icons.add(new GreenfootImage(choppedIconFileName));
+        this.icons.add(new GreenfootImage(name + ".png"));
+        this.icons.add(new GreenfootImage(name + "-chopped.png"));
         this.chopsRequired = chopsRequired;
         this.chops = 0;
         this.cDown = false;

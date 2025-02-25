@@ -12,12 +12,12 @@ public class CookableIngredient extends Ingredient
     private int burnTime;
     private CookType cookMethod;
     
-    public CookableIngredient(int ingredientNumber, String name, String iconFileName, String choppedIconFileName, String cookedIconFileName, int chopsRequired, CookType cookMethod, int cookTime, int burnTime){
-        super(ingredientNumber,name,iconFileName,choppedIconFileName,chopsRequired); 
+    public CookableIngredient(int ingredientNumber, String name, int chopsRequired, CookType cookMethod, int cookTime, int burnTime){
+        super(ingredientNumber,name,chopsRequired); 
         this.cookMethod = cookMethod;
         this.cookTime = cookTime;
         this.burnTime = burnTime;
-        this.icons.add(new GreenfootImage(cookedIconFileName));
+        this.icons.add(new GreenfootImage(name + "-cooked.png"));
         this.icons.add(new GreenfootImage("burnt.png"));
         
     }
