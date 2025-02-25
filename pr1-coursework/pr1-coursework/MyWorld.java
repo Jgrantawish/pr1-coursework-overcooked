@@ -27,5 +27,6 @@ public class MyWorld extends World
     {
         Player player = new Player();
         addObject(player,250,250);
+
     }
 }
