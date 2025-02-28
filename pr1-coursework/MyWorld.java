@@ -25,7 +25,8 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        addObject(new Chef(),1000,200);
+        Player player = new Player();
+        addObject(player,250,250);
         addObject(new Obstacle(25,600),400,300);
         addObject(new Obstacle(50,150),575,350);
         addObject(new Obstacle(100,50),600,400);
