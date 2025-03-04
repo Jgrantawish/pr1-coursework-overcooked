@@ -1,0 +1,3 @@
+public enum Location {
+    STORAGE,HAND,PREP_AREA,FRYING_PAN,HOB,OVEN,PLATE
+}

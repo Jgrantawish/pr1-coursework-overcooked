@@ -22,10 +22,7 @@ public class Ingredient extends Actor {
     public Location location ;
     protected int progress;
     public boolean isPrepared;
-    
-    public enum Location {
-        STORAGE,HAND,PREP_AREA,FRYING_PAN,HOB,OVEN,PLATE
-    }
+
     
     public Ingredient(int ingredientNumber, String name, int chopsRequired) {
         this.ingredientNumber = ingredientNumber;
