@@ -43,30 +43,36 @@ public class Player extends Actor {
     public void act() {
         boolean isMoving = false;
         GreenfootImage[] direction = null;
+        int x = getX();
+        int y = getY();
 
         if (Greenfoot.isKeyDown("W")) {
             setRotation(270);
             direction = up;
             isMoving = true;
             move(1);
+            handleCollision(x,y);
         }
         else if (Greenfoot.isKeyDown("A")) {
             setRotation(180);
             direction = left;
             isMoving = true;
             move(1);
+            handleCollision(x,y);
         }
         else if (Greenfoot.isKeyDown("S")) {
             setRotation(90);
             direction = down;
             isMoving = true;
             move(1);
+            handleCollision(x,y);
         }
         else if (Greenfoot.isKeyDown("D")) {
             setRotation(0);
             direction = right;
             isMoving = true;
             move(1);
+            handleCollision(x,y);
         }
 
         // If moving, animate
@@ -90,4 +96,11 @@ public class Player extends Actor {
             count = (count + 1) % imgs.length;  // Loop between 0 and 1
         }
     }
+
+    public void handleCollision(int x, int y){
+        if (isTouching(Obstacle.class)) {
+                setLocation(x, y);
+            }
+    }
 }
+

@@ -15,8 +15,8 @@ public class MyWorld extends World
      */
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(500, 500, 1);
+        // Create a new world with 1100x500 cells with a cell size of 1x1 pixels.
+        super(1100, 500, 1);
         prepare();
     }
     /**
@@ -27,5 +27,11 @@ public class MyWorld extends World
     {
         Player player = new Player();
         addObject(player,250,250);
+        addObject(new Obstacle(25,600),400,300);
+        addObject(new Obstacle(50,150),575,350);
+        addObject(new Obstacle(100,50),600,400);
+        addObject(new Obstacle(50,150),850,175);
+        addObject(new Obstacle(100,50),825,125);
+        addObject(new Obstacle(150,50),1025,475);
     }
 }
