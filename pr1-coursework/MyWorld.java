@@ -21,8 +21,9 @@ public class MyWorld extends World
     }
 
     private void prepare(){
-        // Ingredient bread = new Ingredient(1,"bread",5);
-        // addObject(bread,12,15);
+
+        Ingredient bread = IngredientFactory.createStandardIngredient("bread",5);
+        addObject(bread,12,15);
         // CookableIngredient carrot = new CookableIngredient(2,"carrot",10,CookType.BOIL,10,30);
         // addObject(carrot,25,25);
     }

@@ -14,7 +14,10 @@ public class ChopStep extends Step{
         this.cDown = false;
         setImage(name + ".png");
     }
-        
+    
+    public void prepareIngredient(){
+        checkForChop();
+    };
 
     private void checkForChop(){
         if (Greenfoot.isKeyDown("c") && !cDown){

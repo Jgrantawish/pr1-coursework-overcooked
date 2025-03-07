@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Step
+comment1.params=location\ name
+comment1.target=Step(Location,\ java.lang.String)
+comment2.params=
+comment2.target=Location\ getLocation()
+comment3.params=
+comment3.target=greenfoot.GreenfootImage\ getImage()
+comment4.params=iconName
+comment4.target=void\ setImage(java.lang.String)
+comment5.params=
+comment5.target=boolean\ getStepComplete()
+comment6.params=stepComplete
+comment6.target=void\ setStepComplete(boolean)
+numComments=7

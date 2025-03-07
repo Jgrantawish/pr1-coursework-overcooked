@@ -14,14 +14,16 @@ import java.util.ArrayList;
  */
 public class Ingredient extends Actor {
     private ArrayList<Step> steps;
-    private int currentStep;
+    private Step currentStep;
     public Location myLocation ;
-    public boolean isPrepared;
+    private boolean isPrepared;
 
     
-    public Ingredient() {
-    
-
+    public Ingredient(ArrayList<Step> steps) {
+        this.steps = steps;
+        this.currentStep = steps.get(0);
+        this.myLocation = Location.STORAGE;
+        this.isPrepared = false;
     }
 
     /**
@@ -30,8 +32,8 @@ public class Ingredient extends Actor {
      */
     public void act(){ 
     
-    //    if (location == ){
-    //        checkForChop();
+    //    if (mylocation == currentStep.getLocation()){
+    //        currentStep.prepareIngredient();
     //    }
     //    onAct();
     //    if (progress == icons.size()-1) {
@@ -39,5 +41,8 @@ public class Ingredient extends Actor {
     //    }
     }
 
+    public boolean getIsIngredientPrepared(){
+        return isPrepared;
+    } 
 
 }
