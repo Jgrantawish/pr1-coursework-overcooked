@@ -4,9 +4,11 @@ public class Step {
     private Location location;
     private GreenfootImage icon;
     private boolean stepComplete;
+    protected String ingredientName;
     
-    public Step(Location location){
+    public Step(Location location, String name){
         this.location = location;
+        this.ingredientName = name;
         this.stepComplete = false;
     }
 
@@ -27,7 +29,7 @@ public class Step {
     } 
 
     protected void setStepComplete(boolean stepComplete){
-
+        this.stepComplete = stepComplete;
     } 
 
 
