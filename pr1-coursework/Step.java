@@ -12,15 +12,18 @@ public class Step {
         this.stepComplete = false;
     }
 
+    public void prepareIngredient(){
+    };
+
     public Location getLocation(){
         return location;
     } 
 
-    public GreenfootImage getImage(){
+    public GreenfootImage getIcon(){
         return icon;
     } 
 
-    protected void setImage(String iconName){
+    protected void setIcon(String iconName){
         this.icon = new GreenfootImage(iconName);
     } 
 

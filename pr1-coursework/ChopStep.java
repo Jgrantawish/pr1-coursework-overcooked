@@ -12,7 +12,7 @@ public class ChopStep extends Step{
         this.chopsRequired = chopsRequired;
         this.chopCount = 0;
         this.cDown = false;
-        setImage(name + ".png");
+        setIcon(name + ".png");
     }
     
     public void prepareIngredient(){
@@ -32,7 +32,7 @@ public class ChopStep extends Step{
     private void chop(){
         chopCount++;
         if (chopCount >= chopsRequired){
-            setImage(ingredientName + "-chopped.png");
+            setIcon(ingredientName + "-chopped.png");
             setStepComplete(true);
         }
         
