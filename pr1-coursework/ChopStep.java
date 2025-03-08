@@ -1,5 +1,4 @@
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
+import greenfoot.*;
 
 public class ChopStep extends Step{
     private int chopsRequired;
@@ -7,12 +6,16 @@ public class ChopStep extends Step{
     private boolean cDown;
     
 
-    public ChopStep(Location location, String name, int chopsRequired){
+    public ChopStep(Location location, String name, int chopsRequired, boolean hasPrevStep){
         super(location, name); 
         this.chopsRequired = chopsRequired;
         this.chopCount = 0;
         this.cDown = false;
-        setIcon(name + ".png");
+        if (hasPrevStep){
+            setIcon(name + "-cooked.png");
+        } else{
+            setIcon(name + ".png");
+        }
     }
     
     public void prepareIngredient(){
@@ -33,7 +36,7 @@ public class ChopStep extends Step{
         chopCount++;
         if (chopCount >= chopsRequired){
             setIcon(ingredientName + "-chopped.png");
-            setStepComplete(true);
+            setIsStepComplete(true);
         }
         
     }

@@ -1,5 +1,11 @@
 #BlueJ class context
 comment0.target=CookStep
-comment1.params=location\ name\ cookTime\ burnTime
-comment1.target=CookStep(Location,\ java.lang.String,\ int,\ int)
-numComments=2
+comment1.params=location\ name\ cookTime\ burnTime\ hasPrevStep
+comment1.target=CookStep(Location,\ java.lang.String,\ int,\ int,\ boolean)
+comment2.params=
+comment2.target=void\ prepareIngredient()
+comment3.params=
+comment3.target=void\ startCooking()
+comment4.params=
+comment4.target=void\ startBurning()
+numComments=5

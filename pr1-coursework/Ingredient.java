@@ -2,29 +2,26 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * This is the base class for an Ingredient. It takes different images on
+ * This is the base class for an Ingredient. It is passed different Steps on
  * construction, depenting on what kind of ingredient it is.
- * All ingredients will have a number, name, image, and the number of chops that
- * are required to prepare them.
- * The isPrepared attribute will determine whether the ingredient is ready to be
- * used to make the meal yet or not.
  * 
- * @author (your name)
- * @version (a version number or a date)
+ * 
+ * @author (Joanna Grant)
+ * @version (08/03/2025)
  */
 public class Ingredient extends Actor {
     private ArrayList<Step> steps;
     private Step currentStep;
-    public Location myLocation ;
+    private Location myLocation ;
     private boolean isPrepared;
+    //private boolean isRuined;
 
     
     public Ingredient(ArrayList<Step> steps) {
         this.steps = steps;
         this.currentStep = steps.get(0);
-        // this.myLocation = Location.STORAGE;
+        this.myLocation = Location.STORAGE;
         this.isPrepared = false;
-        this.myLocation = Location.CHOPPING_BOARD;
         setImage(currentStep.getIcon());
     }
 
@@ -33,30 +30,40 @@ public class Ingredient extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act(){
-    
+        if (currentStep.getIsIconChanged()){
+            setImage(currentStep.getIcon());
+        }
         if (myLocation.equals(currentStep.getLocation())){
             currentStep.prepareIngredient();
-            if (currentStep.getStepComplete()){
-                setImage(currentStep.getIcon());
-                int currentIndex = steps.indexOf(currentStep);
-                int nextIndex = currentIndex + 1;
-                if (nextIndex < (steps.size())){
-                    currentStep = steps.get(nextIndex);
-                    setImage(currentStep.getIcon());
-                } 
-                else {
-                    isPrepared = true;
-                }
-
-            }
         }
-    //    onAct();
-    //    if (progress == icons.size()-1) {
-    //        isPrepared = true;
-    //    }
+    
     }
 
-   // public 
+    public void setLocation(Location location){
+        if (location != myLocation){
+            //if it is ruined
+            //if ((location != currentStep.getLocation()) && (location == Location.HOB || location == Location.OVEN ) || (location == Location.PLATE && !isPrepared))
+            //call error messagew 
+            //else 
+            myLocation = location;
+            if ((myLocation == Location.HAND) && currentStep.getIsStepComplete()){
+                moveToNextStep();
+            }
+        }
+    }
+
+    public void moveToNextStep(){
+        setLocation(Location.HOB);
+        int currentIndex = steps.indexOf(currentStep);
+        int nextIndex = currentIndex + 1;
+        if (nextIndex < (steps.size())){
+            currentStep = steps.get(nextIndex);
+        } 
+        else {
+            isPrepared = true;
+        }
+    }
+ 
 
     public boolean getIsIngredientPrepared(){
         return isPrepared;
