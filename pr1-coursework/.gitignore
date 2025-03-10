@@ -1,8 +1,8 @@
 # Compiled class file
 *.class
 
-#vs code folder
-*.vscode
+# VS code folder
+/.vscode/
 
 # Log file
 *.log
