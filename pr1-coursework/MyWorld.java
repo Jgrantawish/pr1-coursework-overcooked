@@ -67,5 +67,10 @@ public class MyWorld extends World
         addObject(new Counter(), 425, 375);
         addObject(new Counter(), 425, 425);
         addObject(new Counter(), 425, 475);
+        
+        Ingredient carrot = IngredientFactory.createVegetableIngredient("carrot",10,10,30);
+        addObject(carrot,25,25);
+        Ingredient bread = IngredientFactory.createStandardIngredient("bread",5);
+        addObject(bread,12,15);
     }
 }
