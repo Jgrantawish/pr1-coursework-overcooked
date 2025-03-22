@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -8,7 +10,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    GreenfootImage background = new GreenfootImage("images/kitchen_floor.png");
+    public GreenfootImage background = new GreenfootImage("images/kitchen_floor.png");
+    public ArrayList<IngredientInstruction> ingredientInfos;
+    public static final int WORLD_HEIGHT = 500;
+    public static final int WORLD_WIDTH = 1100;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -17,9 +22,11 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 1100x500 cells with a cell size of 1x1 pixels.
-        super(1100, 500, 1);
-        background.scale(1100, 500);
+        super(WORLD_WIDTH, WORLD_HEIGHT, 1);
+        this.ingredientInfos = new ArrayList<IngredientInstruction>();
+        background.scale(WORLD_WIDTH, WORLD_HEIGHT);
         setBackground(background);
+        
         prepare();
     }
     /**
@@ -67,10 +74,34 @@ public class MyWorld extends World
         addObject(new Counter(), 425, 375);
         addObject(new Counter(), 425, 425);
         addObject(new Counter(), 425, 475);
+
+        createAllIngredientInstructions();
+
+
+        VegetableIngredientInstruction carrotInfo = (VegetableIngredientInstruction) findIngredientInstruction("carrot");
         
-        Ingredient carrot = IngredientFactory.createVegetableIngredient("carrot",10,10,30);
+        Ingredient carrot = IngredientFactory.createVegetableIngredient(carrotInfo.getIngredientName(),carrotInfo.getChopsRequired(),carrotInfo.getCookTime(),carrotInfo.getBurnTime());
         addObject(carrot,25,25);
         Ingredient bread = IngredientFactory.createStandardIngredient("bread",5);
         addObject(bread,12,15);
+
+        
     }
+
+    private void createAllIngredientInstructions(){
+        VegetableIngredientInstruction carrotInfo = new VegetableIngredientInstruction("carrot", 10, 20, 25);
+        this.ingredientInfos.add(carrotInfo);     
+    }
+
+    private IngredientInstruction findIngredientInstruction(String name){
+        IngredientInstruction instruction = null;
+        for (IngredientInstruction ingredientInstruction : ingredientInfos) {
+            if (ingredientInstruction.getIngredientName() == name){
+                instruction = ingredientInstruction;
+                break;
+            }
+        }
+        return instruction;
+    }
+
 }
